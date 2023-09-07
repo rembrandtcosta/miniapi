@@ -7,7 +7,7 @@ import { UUID } from 'crypto';
 const routes = (app: Express) => {
   const router = express.Router();
   
-  router.get("/posts", async(req, res) => {
+    router.get("/posts", async(req, res) => {
     await connectToDatabase();
     let chain = (await collections.posts?.find({}).toArray()) as Post[];
     console.log(chain);

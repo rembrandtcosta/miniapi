@@ -1,0 +1,79 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/posts": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "_page",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_end",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/post/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "swaggerDefinition": {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Miniapi",
+      "version": "1.0.0",
+      "description": "Random fake data"
+    }
+  },
+  "apis": [
+    "./routes/index.ts"
+  ]
+}

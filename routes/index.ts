@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import Post from '../models/post';
 import { collections, connectToDatabase } from '../services/database.service';
 import { getPage } from '../helpers/util';
+import { UUID } from 'crypto';
 
 const routes = (app: Express) => {
   const router = express.Router();
@@ -37,8 +38,14 @@ const routes = (app: Express) => {
     }
   });
 
-  router.get("/post/:id", (req: Request, res: Response) => {
-    res.send("Hello " + req.params.id);
+  router.get("/post/:id", async (req: Request, res: Response) => {
+    await connectToDatabase();
+    const id = req.params.id as UUID;
+    let post = (await 
+                  collections.
+                  posts?.
+                  findOne({ postId: id })) as Post;
+    res.status(200).send(post);
   });
 
   app.use("/api", router);

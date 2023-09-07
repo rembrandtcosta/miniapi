@@ -4,7 +4,7 @@ import { collections, connectToDatabase } from "../services/database.service";
 
 export async function setUpDb(n: number) {
   for (let i = 0; i < n; i++) {
-    insertPost()
+    await insertPost()
   }
 }
 

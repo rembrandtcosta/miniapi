@@ -5,11 +5,10 @@ import Post from "../models/post";
 export const collections: { posts?: mongoDB.Collection<Post> } = {}
 
 export async function connectToDatabase() {
-  dotenv.config();
+  dotenv.config({ path: '../.env' });
 
   const client: mongoDB.MongoClient =
     new mongoDB.MongoClient(process.env.DB_CONN_STRING ?? "");
-
   await client.connect();
 
   const db: mongoDB.Db = client.db(process.env.DB_NAME ?? "");

@@ -1,13 +1,15 @@
 import express, { Express, Request, Response } from 'express';
 import Post from '../models/post';
-import { collections } from '../services/database.service';
+import { collections, connectToDatabase } from '../services/database.service';
 import { getPage } from '../helpers/util';
 
 const routes = (app: Express) => {
   const router = express.Router();
   
   router.get("/posts", async(req, res) => {
+    await connectToDatabase();
     let chain = (await collections.posts?.find({}).toArray()) as Post[];
+    console.log(chain);
     let _page = req.query._page as string;
     let _limit = req.query._limit as string;
     let _start = req.query._start as string;

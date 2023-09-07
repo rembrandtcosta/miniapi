@@ -26,6 +26,16 @@
             "type": "string"
           },
           {
+            "name": "_sort",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_order",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "_start",
             "in": "query",
             "type": "string"

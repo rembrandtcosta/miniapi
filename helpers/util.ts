@@ -73,3 +73,4 @@ export function getPage(array: Post[], page: number, perPage: number): Post[] {
   const arr = array.slice(start, end)
   return arr;
 }
+

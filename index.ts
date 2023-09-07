@@ -11,7 +11,7 @@ const port = process.env.PORT;
 
 routes(app);
 
-app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at https://localhost:${port}`);

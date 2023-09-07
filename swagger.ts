@@ -1,4 +1,3 @@
-import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerAutogen from 'swagger-autogen';
 
 const options = {
@@ -18,4 +17,3 @@ const endpointsFiles = ['./routes/index.ts'];
 
 swaggerAutogen()(outputFile, endpointsFiles, options);
 
-export const swaggerSpec = swaggerJsdoc(options);

@@ -2,21 +2,30 @@ import express, { Express, Request, Response } from 'express';
 import Post from '../models/post';
 import { collections, connectToDatabase } from '../services/database.service';
 import { getPage } from '../helpers/util';
+import { SortOrder, orderBy } from '../helpers/sort';
 import { UUID } from 'crypto';
 
 const routes = (app: Express) => {
   const router = express.Router();
   
     router.get("/posts", async(req, res) => {
-    await connectToDatabase();
-    let chain = (await collections.posts?.find({}).toArray()) as Post[];
-    console.log(chain);
-    let _page = req.query._page as string;
-    let _limit = req.query._limit as string;
-    let _start = req.query._start as string;
-    let _end = req.query._end as string;
-
     try {
+      await connectToDatabase();
+      let chain = (await collections.posts?.find({}).toArray()) as Post[];
+      console.log(chain);
+      let _page = req.query._page as string;
+      let _limit = req.query._limit as string;
+      let _sort = req.query._sort as string;
+      let _order = req.query._order as string;
+      let _start = req.query._start as string;
+      let _end = req.query._end as string;
+
+      if (_sort) {
+        const _sortSet = _sort.split(' ');
+        const _orderSet = (_order || '').split(',').map((s) => s.toLowerCase());
+        chain = orderBy(chain, _sortSet, (_orderSet as SortOrder[]));
+      }
+
       if (_page) {
         let page: number = parseInt(_page, 10);
         page = page >= 1 ? page : 1;

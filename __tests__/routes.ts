@@ -1,14 +1,5 @@
 import request from 'supertest';
-import { server } from '../index'; // Import your Express app
 import app from '../index';
-
-/*afterAll(() => {
-  server.close((err) => {
-    console.log('server closed');
-    process.exit(err ? 1 : 0);
-  });
-});*/
- 
 
 describe('GET /api/posts', () => {
   test('responds with 200 OK', async () => {
@@ -33,6 +24,21 @@ describe('GET /api/posts?_page=2&_limit=12', () => {
   });
 });
   
+describe('GET /api/posts?_page=1&_limit=8', () => {
+  test('should respond with the first page and 8 items', async () => {
+    const response = await request(app).get('/api/posts?_page=1&_limit=8');
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBe(8);
+  });
+});
+
+describe('GET /api/posts?_start=0&_end=20', () => {
+  test('should respond with the first 20 items', async () => {
+    const response = await request(app).get('/api/posts?_start=0&_end=20');
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBe(20);
+  });
+});
 
 describe('GET /api/post/{id}', () => {
   test('should respond with 404 if resource is not found', async () => {

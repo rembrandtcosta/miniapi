@@ -1,11 +1,11 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "1.0.0",
-    "title": "REST API",
-    "description": ""
+    "title": "Miniapi",
+    "description": "Random fake data",
+    "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "localhost:8000",
   "basePath": "/",
   "schemes": [
     "http"
@@ -74,16 +74,5 @@
         }
       }
     }
-  },
-  "swaggerDefinition": {
-    "openapi": "3.0.0",
-    "info": {
-      "title": "Miniapi",
-      "version": "1.0.0",
-      "description": "Random fake data"
-    }
-  },
-  "apis": [
-    "./routes/index.ts"
-  ]
+  }
 }

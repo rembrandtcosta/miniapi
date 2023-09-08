@@ -13,7 +13,7 @@ routes(app);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
-app.listen(port, () => {
+export const server = app.listen(port, () => {
   console.log(`[server]: Server is running at https://localhost:${port}`);
 });
 

@@ -12,7 +12,7 @@ function printUsage() {
   console.log(`Usage: ts-node fill.ts -n <number of items>`);
 }
 
-async function run() {
+async function runCLI() {
   await connectToDatabase();
   if (arg.length == 0 || arg.length > 2 || arg[0] !== '-n') {
     printUsage();
@@ -28,4 +28,10 @@ async function run() {
   }
 }
 
-run();
+runCLI();
+
+export async function run(n: number) {
+  await connectToDatabase();
+  await setUpDb(n);
+  console.log(`Successfully created ${n} random items`);
+}

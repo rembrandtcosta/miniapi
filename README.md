@@ -30,6 +30,14 @@ npm tests
 
 ## Docker Image
 
+You can run the API and the Mongo Database with Docker Compose
+
+```
+docker-compose up -d
+```
+
+## Authentication
+
 [TO DO]
 
 ## Working deploy

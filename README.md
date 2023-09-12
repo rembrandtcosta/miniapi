@@ -36,10 +36,6 @@ You can run the API and the Mongo Database with Docker Compose
 docker-compose up -d
 ```
 
-## Authentication
-
-[TO DO]
-
 ## Working deploy
 
-[TO DO]
+There is a working deploy of this project @ https://miniapi.onrender.com/, you can also check the docs @ https://miniapi.onrender.com/api-docs/
